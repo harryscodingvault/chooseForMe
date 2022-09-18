@@ -15,6 +15,7 @@ const Main = () => {
   const [values, setValues] = useState(initialValuesState);
   const [errorMessages, setErrorMessages] = useState(initialErrorState);
   const [listItems, setListItems] = useState<string[]>([]);
+  const [selection, setSelection] = useState("");
 
   const handleChange = (e: React.FormEvent) => {
     const name = (e.target as HTMLInputElement).name;
@@ -56,6 +57,11 @@ const Main = () => {
     setListItems(newList);
   };
 
+  const selectionHandler = () => {
+    let choice = Math.floor(Math.random() * listItems.length);
+    setSelection(listItems[choice]);
+  };
+
   return (
     <Wrapper>
       <div>
@@ -78,11 +84,11 @@ const Main = () => {
         </form>
       </div>
       <ListItems list={listItems} deleteHandler={deleteHandler} />
-      <div>
-        <div className="btn">
-          <h5>Go destiny!!</h5>
-        </div>
+
+      <div className="btn" onClick={selectionHandler}>
+        <h5>Go destiny!!</h5>
       </div>
+      {selection && <h3>{selection}</h3>}
     </Wrapper>
   );
 };
