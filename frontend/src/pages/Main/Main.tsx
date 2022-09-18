@@ -28,14 +28,11 @@ const Main = () => {
     getCurrentCount();
   }, []);
 
-  useEffect(() => {
-    const getCurrentCount = async () => {
-      const url = "http://localhost:5000/api/counter";
-      let res = await axios.post(url);
-      setCounter(res.data.currentCount);
-    };
-    getCurrentCount();
-  }, [selection]);
+  const addCount = async () => {
+    const url = "http://localhost:5000/api/counter";
+    let res = await axios.post(url);
+    setCounter(res.data.currentCount);
+  };
 
   const handleChange = (e: React.FormEvent) => {
     const name = (e.target as HTMLInputElement).name;
@@ -79,7 +76,10 @@ const Main = () => {
 
   const selectionHandler = () => {
     let choice = Math.floor(Math.random() * listItems.length);
-    setSelection(listItems[choice]);
+    if (listItems.length >= 2) {
+      addCount();
+      setSelection(listItems[choice]);
+    }
   };
 
   return (
