@@ -5,7 +5,6 @@ interface FormInputInterface {
   type: string;
   name: string;
   value: string | number;
-  label: string;
   min?: number;
   errorMessage: string;
   required: boolean;
@@ -16,7 +15,6 @@ const FormInput = ({
   type,
   name,
   value,
-  label,
   errorMessage,
   handleChange,
   required,
@@ -24,9 +22,6 @@ const FormInput = ({
 }: FormInputInterface) => {
   return (
     <Wrapper>
-      <label htmlFor={name} className="form-label">
-        {label || name}
-      </label>
       <input
         type={type}
         value={value}

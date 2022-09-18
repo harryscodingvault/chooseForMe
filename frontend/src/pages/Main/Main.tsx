@@ -64,7 +64,7 @@ const Main = () => {
 
   return (
     <Wrapper>
-      <div>
+      <div className="title-h">
         <h2>Random decision making machine</h2>
       </div>
       <div className="input-container">
@@ -72,23 +72,22 @@ const Main = () => {
           <FormInput
             name="item"
             type="text"
-            label="Input Option"
             required={true}
             errorMessage={errorMessages.itemM}
             value={values.item}
             handleChange={handleChange}
           />
           <button type="submit" className="btn btn-primary">
-            <h5>Add</h5>
+            <h5>Add Option</h5>
           </button>
         </form>
       </div>
+      {selection && <h3 className="result">{selection}</h3>}
       <ListItems list={listItems} deleteHandler={deleteHandler} />
 
-      <div className="btn" onClick={selectionHandler}>
+      <div className="btn main-btn" onClick={selectionHandler}>
         <h5>Go destiny!!</h5>
       </div>
-      {selection && <h3>{selection}</h3>}
     </Wrapper>
   );
 };
