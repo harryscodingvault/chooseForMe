@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import FormInput from "../../components/FormInput/FormInput";
 import ListItems from "../../components/ListItems/ListItems";
@@ -16,6 +17,25 @@ const Main = () => {
   const [errorMessages, setErrorMessages] = useState(initialErrorState);
   const [listItems, setListItems] = useState<string[]>([]);
   const [selection, setSelection] = useState("");
+  const [counter, setCounter] = useState(null);
+
+  useEffect(() => {
+    const getCurrentCount = async () => {
+      const url = "http://localhost:5000/api/counter";
+      let res = await axios.get(url);
+      setCounter(res.data.currentCount);
+    };
+    getCurrentCount();
+  }, []);
+
+  useEffect(() => {
+    const getCurrentCount = async () => {
+      const url = "http://localhost:5000/api/counter";
+      let res = await axios.post(url);
+      setCounter(res.data.currentCount);
+    };
+    getCurrentCount();
+  }, [selection]);
 
   const handleChange = (e: React.FormEvent) => {
     const name = (e.target as HTMLInputElement).name;
@@ -65,7 +85,10 @@ const Main = () => {
   return (
     <Wrapper>
       <div className="title-h">
-        <h2>Random decision making machine</h2>
+        <h4>Random decision making machine</h4>
+        <h4>
+          <span>{counter}</span> decisions have been made
+        </h4>
       </div>
       <div className="input-container">
         <form className="form" onSubmit={handleSubmit}>

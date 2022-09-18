@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
     color: var(--secondary-500);
     text-align: center;
     margin-top: 1rem;
+    span {
+      color: var(--red-dark);
+    }
   }
   .form {
     display: flex;
