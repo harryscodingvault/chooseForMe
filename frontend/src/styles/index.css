@@ -7,7 +7,7 @@
 }
 
 :root {
-  --backgroundColor: var(--primary-500);
+  --backgroundColor: var(--primary-900);
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
   --transition: 0.3s ease-in-out all;

@@ -87,7 +87,7 @@ const Main = () => {
       <div className="title-h">
         <h4>Random decision making machine</h4>
         <h4>
-          <span>{counter}</span> decisions have been made
+          <span>{counter || 0}</span> decisions have been made
         </h4>
       </div>
       <div className="input-container">
