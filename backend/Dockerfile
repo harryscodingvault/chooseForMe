@@ -8,8 +8,11 @@ RUN npm install
 
 COPY . .
 
-FROM base as production
+RUN npm run build
 
 ENV NODE_PATH=./build
 
-RUN npm run build
+FROM base as production
+
+
+
