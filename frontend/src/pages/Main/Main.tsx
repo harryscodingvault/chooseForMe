@@ -18,10 +18,10 @@ const Main = () => {
   const [listItems, setListItems] = useState<string[]>([]);
   const [selection, setSelection] = useState("");
   const [counter, setCounter] = useState(null);
+  const url = "https://chooseforme.onrender.com/api/counter";
 
   useEffect(() => {
     const getCurrentCount = async () => {
-      const url = "http://localhost:5000/api/counter";
       let res = await axios.get(url);
       setCounter(res.data.currentCount);
     };
@@ -29,7 +29,6 @@ const Main = () => {
   }, []);
 
   const addCount = async () => {
-    const url = "http://localhost:5000/api/counter";
     let res = await axios.post(url);
     setCounter(res.data.currentCount);
   };
